@@ -21,7 +21,6 @@
         <terms:creator rdf:resource="https://orcid.org/0000-0003-3405-1538"/>
         <terms:creator rdf:resource="https://orcid.org/0000-0003-4101-1622"/>
         <terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
-        <owl:versionInfo>2025-09-05</owl:versionInfo>
         <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2026-05-15</owl:versionInfo>
     </owl:Ontology>
     
@@ -397,7 +396,7 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000003">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000057"/>
-        <obo:IAO_0000115>Clinical processes relation to administration.</obo:IAO_0000115>
+        <obo:IAO_0000115>A clinical process related to tracking administrative responsibilitity.</obo:IAO_0000115>
         <obo:IAO_0000232>Do not instantiate.</obo:IAO_0000232>
         <oboInOwl:id>CLCO:0000003</oboInOwl:id>
         <rdfs:label>clinical administration</rdfs:label>
@@ -503,12 +502,12 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000112>Here for packing and splint removal after recent discharge from rehab</obo:IAO_0000112>
-        <obo:IAO_0000115>Statement indicating that an intervention is followed by an intervention or assessment</obo:IAO_0000115>
+        <obo:IAO_0000115>Statement indicating that an intervention or finding precedes an intervention or finding.</obo:IAO_0000115>
         <obo:IAO_0000232>Used to be &quot;is followed by&quot; but this causes confusion when following refers to a particular clilnician responsible for a patient&apos;s care</obo:IAO_0000232>
         <oboInOwl:hasDbXref>OMOP_CONCEPT_ID:4272244</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref>SNOMED:367409002</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000011</oboInOwl:id>
-        <rdfs:label>is subsequent to</rdfs:label>
+        <rdfs:label>precedes</rdfs:label>
     </owl:Class>
     
 
@@ -1258,8 +1257,8 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000112>Will discuss with interventional in AM about possible pulmonary vein dilation w/stenting</obo:IAO_0000112>
-        <obo:IAO_0000115>Statement indicating that an intervention has a decision.</obo:IAO_0000115>
-        <obo:IAO_0000232>May needs new label, was previously has_pending_decision</obo:IAO_0000232>
+        <obo:IAO_0000115>A statement indicating that a clinician or patient has a decision concerning an intervention.</obo:IAO_0000115>
+        <obo:IAO_0000232>May needs new label, was previously has_pending_decision, but with modifieres this can be scoped more specifically.</obo:IAO_0000232>
         <oboInOwl:id>CLCO:0000043</oboInOwl:id>
         <rdfs:label>has decision</rdfs:label>
     </owl:Class>
@@ -1378,7 +1377,7 @@
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000115>Statement indicating that an intervention has been discussed with patient</obo:IAO_0000115>
+        <obo:IAO_0000115>Statement indicating that an intervention has been discussed with patient by a clinician (clinician initiated) or a patient has discussed an intervention with their clinician (patient initiated). The default assumption should be that the discussion is clinician initiated.</obo:IAO_0000115>
         <obo:IAO_0000232>Likely need to break this down for reasoning, values available include separate concepts for discussion with caregiver, patient, specialist, pharmacist, payer, etc...</obo:IAO_0000232>
         <oboInOwl:id>CLCO:0000048</oboInOwl:id>
         <rdfs:label>discussed with</rdfs:label>
@@ -1600,7 +1599,6 @@ Colicchio, Tiago K., Pavithra I. Dissanayake, and James J. Cimino. &quot;Formal 
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000003"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
@@ -1996,7 +1994,7 @@ All of these should correspond to a subject or object in relations extracted by 
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
-        <obo:IAO_0000115>A clinical finding of any type, including conditions.</obo:IAO_0000115>
+        <obo:IAO_0000115>A clinical finding of any type, including conditions, diagnosis and assessments.</obo:IAO_0000115>
         <obo:IAO_0000232>Was finding/condition in original paper, can treat condition as a subclass if needed.</obo:IAO_0000232>
         <oboInOwl:hasDbXref>biolink:DiseaseOrPhenotypicFeature</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000101</oboInOwl:id>
@@ -2077,7 +2075,7 @@ All of these should correspond to a subject or object in relations extracted by 
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000108">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
-        <obo:IAO_0000115>Health care professional, unlike SNOMED, includes only people working directly with patients such as physicians, nurses, etc... Adminstrative healthcare professionals such as healthcare billing coders are not included.</obo:IAO_0000115>
+        <obo:IAO_0000115>Health care professional, unlike SNOMED, includes only people working directly with patients such as physicians, nurses, etc... Administrative healthcare professionals such as healthcare billing coders are not included.</obo:IAO_0000115>
         <oboInOwl:id>CLCO:0000108</oboInOwl:id>
         <rdfs:label>clinician</rdfs:label>
     </owl:Class>
@@ -2159,6 +2157,18 @@ All of these should correspond to a subject or object in relations extracted by 
         <oboInOwl:hasDbXref>SNOMED:58000006</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000114</oboInOwl:id>
         <rdfs:label>is discharged</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000115 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000115">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
+        <obo:IAO_0000115>A person who is a member of the patient&apos;s family. A caregiver who is not a family member would be identified as a clinician.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>SNOMED:303071001</oboInOwl:hasDbXref>
+        <oboInOwl:id>CLCO:0000115</oboInOwl:id>
+        <rdfs:label>family member</rdfs:label>
     </owl:Class>
     
 

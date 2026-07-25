@@ -1,5 +1,5 @@
 format-version: 1.2
-data-version: releases/2026-05-15
+data-version: releases/2026-07-25
 ontology: clco
 property_value: http://purl.org/dc/elements/1.1/creator "James J. Cimino" xsd:string
 property_value: http://purl.org/dc/elements/1.1/creator "John D. Osborne" xsd:string
@@ -10,8 +10,8 @@ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-085
 property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0003-3405-1538
 property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0003-4101-1622
 property_value: http://purl.org/dc/terms/license http://creativecommons.org/licenses/by/4.0/
-property_value: owl:versionInfo "2025-09-05" xsd:string
 property_value: owl:versionInfo "2026-05-15" xsd:string
+property_value: owl:versionInfo "2026-07-25" xsd:string
 
 [Term]
 id: BFO:0000001
@@ -30,7 +30,7 @@ relationship: CLCO:0002502 CLCO:0000110 ! has subject patient
 [Term]
 id: CLCO:0000003
 name: clinical administration
-def: "Clinical processes relation to administration." []
+def: "A clinical process related to tracking administrative responsibilitity." []
 is_a: CLCO:0000057 ! clinical association
 property_value: IAO:0000232 "Do not instantiate." xsd:string
 
@@ -67,8 +67,8 @@ property_value: IAO:0000232 "Does not exist in OMOP, admission is specific for i
 
 [Term]
 id: CLCO:0000011
-name: is subsequent to
-def: "Statement indicating that an intervention is followed by an intervention or assessment" []
+name: precedes
+def: "Statement indicating that an intervention or finding precedes an intervention or finding." []
 xref: OMOP_CONCEPT_ID:4272244
 xref: SNOMED:367409002
 is_a: CLCO:0000006 ! clinical explanation
@@ -305,11 +305,11 @@ property_value: IAO:0000232 "OMOP 4253630 \"Goal\"  doesn't really match well, w
 [Term]
 id: CLCO:0000043
 name: has decision
-def: "Statement indicating that an intervention has a decision." []
+def: "A statement indicating that a clinician or patient has a decision concerning an intervention." []
 is_a: CLCO:0000005 ! clinical decision
 relationship: CLCO:0002501 CLCO:0000102 ! has object intervention
 property_value: IAO:0000112 "Will discuss with interventional in AM about possible pulmonary vein dilation w/stenting" xsd:string
-property_value: IAO:0000232 "May needs new label, was previously has_pending_decision" xsd:string
+property_value: IAO:0000232 "May needs new label, was previously has_pending_decision, but with modifieres this can be scoped more specifically." xsd:string
 
 [Term]
 id: CLCO:0000044
@@ -343,7 +343,7 @@ relationship: CLCO:0002502 CLCO:0000110 ! has subject patient
 [Term]
 id: CLCO:0000048
 name: discussed with
-def: "Statement indicating that an intervention has been discussed with patient" []
+def: "Statement indicating that an intervention has been discussed with patient by a clinician (clinician initiated) or a patient has discussed an intervention with their clinician (patient initiated). The default assumption should be that the discussion is clinician initiated." []
 is_a: CLCO:0000049 ! has confirmation
 property_value: IAO:0000232 "Likely need to break this down for reasoning, values available include separate concepts for discussion with caregiver, patient, specialist, pharmacist, payer, etc..." xsd:string
 
@@ -431,7 +431,7 @@ id: CLCO:0000058
 name: has setting
 def: "Inference about the location or setting where a clinical event happened." []
 xref: OMOP_CONCEPT_ID:32462
-is_a: CLCO:0000003 ! clinical administration
+is_a: CLCO:0000057 ! clinical association
 intersection_of: CLCO:0000057 ! clinical association
 intersection_of: CLCO:0002501 CLCO:0000107 ! has object setting
 relationship: CLCO:0002501 CLCO:0000107 ! has object setting
@@ -631,7 +631,7 @@ property_value: IAO:0000232 "The 14 core clinical entity classes defined in:\nCo
 [Term]
 id: CLCO:0000101
 name: finding
-def: "A clinical finding of any type, including conditions." []
+def: "A clinical finding of any type, including conditions, diagnosis and assessments." []
 xref: biolink:DiseaseOrPhenotypicFeature
 is_a: CLCO:0000100 ! clinical entity
 property_value: IAO:0000232 "Was finding/condition in original paper, can treat condition as a subclass if needed." xsd:string
@@ -677,7 +677,7 @@ is_a: CLCO:0000100 ! clinical entity
 [Term]
 id: CLCO:0000108
 name: clinician
-def: "Health care professional, unlike SNOMED, includes only people working directly with patients such as physicians, nurses, etc... Adminstrative healthcare professionals such as healthcare billing coders are not included." []
+def: "Health care professional, unlike SNOMED, includes only people working directly with patients such as physicians, nurses, etc... Administrative healthcare professionals such as healthcare billing coders are not included." []
 is_a: CLCO:0000100 ! clinical entity
 
 [Term]
@@ -723,6 +723,13 @@ xref: SNOMED:58000006
 is_a: CLCO:0000058 ! has setting
 relationship: CLCO:0002502 CLCO:0000110 ! has subject patient
 property_value: IAO:0000112 "Patient discharged this morning with family" xsd:string
+
+[Term]
+id: CLCO:0000115
+name: family member
+def: "A person who is a member of the patient's family. A caregiver who is not a family member would be identified as a clinician." []
+xref: SNOMED:303071001
+is_a: CLCO:0000100 ! clinical entity
 
 [Term]
 id: IAO:0000030
