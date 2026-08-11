@@ -11,7 +11,7 @@
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/clco.owl">
-        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/clco/releases/2026-05-15/clco.owl"/>
+        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/clco/releases/2026-07-25/clco.owl"/>
         <dc:creator>James J. Cimino</dc:creator>
         <dc:creator>John D. Osborne</dc:creator>
         <dc:creator>Tiago K. Colicchio</dc:creator>
@@ -21,7 +21,8 @@
         <terms:creator rdf:resource="https://orcid.org/0000-0003-3405-1538"/>
         <terms:creator rdf:resource="https://orcid.org/0000-0003-4101-1622"/>
         <terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2026-05-15</owl:versionInfo>
+        <owl:versionInfo>2026-05-15</owl:versionInfo>
+        <owl:versionInfo>2026-07-25</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -1599,6 +1600,7 @@ Colicchio, Tiago K., Pavithra I. Dissanayake, and James J. Cimino. &quot;Formal 
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000057"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
@@ -2152,6 +2154,7 @@ All of these should correspond to a subject or object in relations extracted by 
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000112>Patient discharged this morning with family</obo:IAO_0000112>
+        <obo:IAO_0000112>Patient will be discharged</obo:IAO_0000112>
         <obo:IAO_0000115>Statement indicating that the patient has been discharged from a clinical setting</obo:IAO_0000115>
         <oboInOwl:hasDbXref>OMOP_CONCEPT_ID:4137031</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref>SNOMED:58000006</oboInOwl:hasDbXref>
@@ -2178,6 +2181,168 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/IAO_0000030">
         <obo:IAO_0000115>A generically dependent continuant that is about some entity.</obo:IAO_0000115>
         <rdfs:label>information content entity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_adherance -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_adherance">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/clco.owl#has_prescription"/>
+        <rdfs:label>has adherance</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_alcohol_use -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_alcohol_use">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/clco.owl#has_drug_use"/>
+        <rdfs:label>has alcohol use</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_allergy -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_allergy">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <obo:IAO_0000112>Patient has allergy to Sulfa drugs, therefore furosemide is contraindicated in the treatment of edema.</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating patient&apos;s allergy to drug class.</obo:IAO_0000115>
+        <rdfs:label>has allergy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_current_medication -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_current_medication">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <rdfs:label>has current medication</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_diet -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_diet">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <rdfs:label>has diet</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_drug_use -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_drug_use">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <rdfs:label>has drug use</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_family_history -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_family_history">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <obo:IAO_0000112>History of chronic illness in family members</obo:IAO_0000112>
+        <rdfs:label>has family history</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_hospitalization_history -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_hospitalization_history">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <rdfs:label>has past hospitalization</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_illicit_drug_use -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_illicit_drug_use">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/clco.owl#has_drug_use"/>
+        <rdfs:label>has illicit drug use</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_over_the_counter -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_over_the_counter">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/clco.owl#has_current_medication"/>
+        <rdfs:label>has over the counter</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_physical_activity -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_physical_activity">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <rdfs:label>has physical activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_prescription -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_prescription">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/clco.owl#has_current_medication"/>
+        <rdfs:label>has prescription</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_psychiatric_history -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_psychiatric_history">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <rdfs:label>has psychiatric history</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_support_system -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_support_system">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <obo:IAO_0000112>Patient has dementia and was prescribed omeprazole for heart burn. They have an adult daughter who visits them daily so prescription of medication can be better adhered to with involvement of daughter.</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement is used to identify if the patient has family, friends, or caregivers, able to assisst with their care. This is crucial information in the determination of therapy as those who may have cognitive or physical impairment. Although a patient may be prescribed the correct therapy for their condition their ability to implement and maintain adherence will greatly affect efficacy.</obo:IAO_0000115>
+        <rdfs:label>has support system</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_surgical_history -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_surgical_history">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000054"/>
+        <obo:IAO_0000115>Patient presented to hospital with fracture of the femoral neck. It was found she had a history of bilateral salpingoophorectomy which contribute to decreased estrogen levels and bone loss facilitating susceptibility to fracture.</obo:IAO_0000115>
+        <rdfs:label>has surgical history</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_timing -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_timing">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000057"/>
+        <obo:IAO_0000112>Patient explains that her significant pelvic discomfort occurs 2-3 days a month concurrent with the onset of menstruation for the past 4 months.</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicates the reccurence of the condition with a specific time of day or month.</obo:IAO_0000115>
+        <rdfs:label>has timing</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_tobacco_use -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_tobacco_use">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/clco.owl#has_drug_use"/>
+        <obo:IAO_0000115>Statement is used to identify history of tobacco use. This includes consistent second hand smoke exposure due to usage from a co-habitant</obo:IAO_0000115>
+        <rdfs:label>has tobacco use</rdfs:label>
     </owl:Class>
     
 
@@ -2211,5 +2376,5 @@ All of these should correspond to a subject or object in relations extracted by 
 
 
 
-<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
 
