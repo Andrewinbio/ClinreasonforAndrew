@@ -1486,31 +1486,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/CLCO_0000054 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000054">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000110"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
 
     <!-- http://purl.obolibrary.org/obo/CLCO_0000057 -->
 
