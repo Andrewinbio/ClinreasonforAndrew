@@ -11,7 +11,7 @@
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/clco.owl">
-        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/clco/releases/2026-07-25/clco.owl"/>
+        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/clco/releases/2026-09-04/clco.owl"/>
         <dc:creator>James J. Cimino</dc:creator>
         <dc:creator>John D. Osborne</dc:creator>
         <dc:creator>Tiago K. Colicchio</dc:creator>
@@ -21,8 +21,9 @@
         <terms:creator rdf:resource="https://orcid.org/0000-0003-3405-1538"/>
         <terms:creator rdf:resource="https://orcid.org/0000-0003-4101-1622"/>
         <terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2026-05-15</owl:versionInfo>
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2026-07-25</owl:versionInfo>
+        <owl:versionInfo>2026-05-15</owl:versionInfo>
+        <owl:versionInfo>2026-07-25</owl:versionInfo>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2026-09-04</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -639,38 +640,6 @@
         <oboInOwl:hasDbXref>OMOP_CONCEPT_ID:44818727</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000017</oboInOwl:id>
         <rdfs:label>has effect</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/CLCO_0000019 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000019">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000057"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000103"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115>Statement indicating the frequency of a finding/condition or intervention</obo:IAO_0000115>
-        <obo:IAO_0000232>SNOMED 162451001 is symptom frequency, break this down into intervention and condition/symptom/finding frequency.</obo:IAO_0000232>
-        <oboInOwl:hasDbXref>biolink:frequency_qualifier</oboInOwl:hasDbXref>
-        <oboInOwl:id>CLCO:0000019</oboInOwl:id>
-        <rdfs:label>has frequency</rdfs:label>
     </owl:Class>
     
 
@@ -1518,59 +1487,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/CLCO_0000054 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000054">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000057"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000110"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000112>The patient underwent two kidney transplants (2002, 2012)</obo:IAO_0000112>
-        <obo:IAO_0000115>Statement of fact about a patient that constitutes past medical history</obo:IAO_0000115>
-        <obo:IAO_0000232>SNOMED CT United Kingdom clinical extension module sourced.</obo:IAO_0000232>
-        <oboInOwl:hasDbXref>OMOP_CONCEPT_ID:44813766</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref>SNOMED:722291000000108</oboInOwl:hasDbXref>
-        <oboInOwl:id>CLCO:0000054</oboInOwl:id>
-        <rdfs:label>has history</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/CLCO_0000055 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000055">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000025"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000110"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000112>Patient mentioned genetic risk for DVT/PE from commercial DNA testing kit of unknown type</obo:IAO_0000112>
-        <obo:IAO_0000115>Statement indicating the patient is at risk for a condition or procedure.</obo:IAO_0000115>
-        <oboInOwl:hasDbXref>SNOMED:80943009</oboInOwl:hasDbXref>
-        <oboInOwl:id>CLCO:0000055</oboInOwl:id>
-        <rdfs:label>has risk factor</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/CLCO_0000057 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000057">
@@ -2010,6 +1926,7 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>An intervention to treat or diagnose a finding/condition or the patient</obo:IAO_0000115>
+        <obo:IAO_0000232>There is not a SNOMED code for this as of 08/19/2026 documented in the athena ohdsi database.</obo:IAO_0000232>
         <oboInOwl:hasDbXref>biolink:Procedure</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000102</oboInOwl:id>
         <rdfs:label>intervention</rdfs:label>
@@ -2023,6 +1940,7 @@ All of these should correspond to a subject or object in relations extracted by 
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>Numerical or narrative temporal data elements</obo:IAO_0000115>
         <obo:IAO_0000232>Moved from subClassOf task (CLCO_0000109) to subClassOf clinical_entity (CLCO_0000100). Time is a first-class clinical entity type, not a subtype of task.</obo:IAO_0000232>
+        <oboInOwl:hasDbXref>SNOMEDCT:410669006</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000103</oboInOwl:id>
         <rdfs:label>time</rdfs:label>
     </owl:Class>
@@ -2034,6 +1952,8 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000104">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>Justifications and reasons for ordering, performing, planning, or discontinuing an intervention or diagnostic process</obo:IAO_0000115>
+        <obo:IAO_0000232>SNOMEDCT sourced from Athena OHDSI &quot;Reason and justification&quot; (https://athena.ohdsi.org/search-terms/terms/4128496)</obo:IAO_0000232>
+        <oboInOwl:hasDbXref>SNOMEDCT:288830005</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000104</oboInOwl:id>
         <rdfs:label>reason</rdfs:label>
     </owl:Class>
@@ -2045,6 +1965,7 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000105">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>Course of a finding/condition</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>SNOMEDCT:260908002</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000105</oboInOwl:id>
         <rdfs:label>course</rdfs:label>
     </owl:Class>
@@ -2056,6 +1977,8 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000106">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>Any numerical or narrative description of a finding/condition or intervention</obo:IAO_0000115>
+        <obo:IAO_0000232>SNOWMEDCT code for &quot;hasvalue&quot; sourced from Athena OHDSI database (https://athena.ohdsi.org/search-terms/terms/4306768)</obo:IAO_0000232>
+        <oboInOwl:hasDbXref>SNOWMEDCT:83568003</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000106</oboInOwl:id>
         <rdfs:label>value</rdfs:label>
     </owl:Class>
@@ -2067,6 +1990,7 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000107">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>Health care setting or location</obo:IAO_0000115>
+        <obo:IAO_0000232>There is not a SNOMED code for this as of 08/19/2026 documented in the athena ohdsi database.</obo:IAO_0000232>
         <oboInOwl:id>CLCO:0000107</oboInOwl:id>
         <rdfs:label>setting</rdfs:label>
     </owl:Class>
@@ -2078,6 +2002,7 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000108">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>Health care professional, unlike SNOMED, includes only people working directly with patients such as physicians, nurses, etc... Administrative healthcare professionals such as healthcare billing coders are not included.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>SNOMEDCT:44804106</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000108</oboInOwl:id>
         <rdfs:label>clinician</rdfs:label>
     </owl:Class>
@@ -2089,6 +2014,8 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000109">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>Any healthcare related task not related to direct clinical activities (e.g., phone call or uploading a medical record file).</obo:IAO_0000115>
+        <obo:IAO_0000232>SNOMEDCT code sourced from Athena OHDSI &quot;TASK&quot; (https://athena.ohdsi.org/search-terms/terms/4008963)</obo:IAO_0000232>
+        <oboInOwl:hasDbXref>SNOMEDCT:101878003</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000109</oboInOwl:id>
         <rdfs:label>task</rdfs:label>
     </owl:Class>
@@ -2100,6 +2027,7 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000110">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>The patient entity</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>SNOMEDCT:116154003</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref>biolink:Case</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000110</oboInOwl:id>
         <rdfs:label>patient</rdfs:label>
@@ -2137,6 +2065,8 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000113">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000100"/>
         <obo:IAO_0000115>Patient state, e.g., stable, improving. The overall patient state, not whether a particular disease or condition is stable or improving.</obo:IAO_0000115>
+        <obo:IAO_0000232>SNOMEDCT was sourced from Athena OHDSI &quot;Patient Status&quot; (http://athena.ohdsi.org/search-terms/terms/4077556)</obo:IAO_0000232>
+        <oboInOwl:hasDbXref>SNOWMEDCT:246097001</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000113</oboInOwl:id>
         <rdfs:label>patient state</rdfs:label>
     </owl:Class>
@@ -2154,6 +2084,7 @@ All of these should correspond to a subject or object in relations extracted by 
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000112>Patient discharged this morning with family</obo:IAO_0000112>
+        <obo:IAO_0000112>Patient will be discharged</obo:IAO_0000112>
         <obo:IAO_0000115>Statement indicating that the patient has been discharged from a clinical setting</obo:IAO_0000115>
         <oboInOwl:hasDbXref>OMOP_CONCEPT_ID:4137031</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref>SNOMED:58000006</oboInOwl:hasDbXref>
@@ -2180,6 +2111,35 @@ All of these should correspond to a subject or object in relations extracted by 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/IAO_0000030">
         <obo:IAO_0000115>A generically dependent continuant that is about some entity.</obo:IAO_0000115>
         <rdfs:label>information content entity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_family_history -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_family_history">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000083"/>
+        <obo:IAO_0000112>The patient&apos;s mother has a past medical history of hypercholoesterolemia.</obo:IAO_0000112>
+        <obo:IAO_0000115>History of chronic illness in family members</obo:IAO_0000115>
+        <obo:IAO_0000232>Sourced from Athena OHDSI &quot;family history&quot; (https://athena.ohdsi.org/search-terms/terms/40306697)</obo:IAO_0000232>
+        <oboInOwl:hasDbXref>SNOMEDCT:137667000</oboInOwl:hasDbXref>
+        <rdfs:label>has family history</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/clco.owl#has_timing -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/clco.owl#has_timing">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000057"/>
+        <obo:IAO_0000112>Patient explains that her significant pelvic discomfort occurs 2-3 days a month concurrent with the onset of menstruation for the past 4 months.</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicates the reccurence/or frequency of a finding/condition/intervention with a specific time of day or month.</obo:IAO_0000115>
+        <obo:IAO_0000232>SNOMEDCT sourced from Athena OHDSI (https://athena.ohdsi.org/search-terms/terms/4079053)</obo:IAO_0000232>
+        <obo:IAO_0000232>This class also encompases the prior has frequency class that was provided in earlier versions of clco-edit.owl. SNOMED 162451001 is symptom frequency, break this down into intervention and condition/symptom/finding frequency.</obo:IAO_0000232>
+        <oboInOwl:hasDbXref>SNOMEDCT:246512002</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>biolink:frequency_qualifier</oboInOwl:hasDbXref>
+        <oboInOwl:id>CLCO:0000019</oboInOwl:id>
+        <rdfs:label>has timing</rdfs:label>
     </owl:Class>
     
 

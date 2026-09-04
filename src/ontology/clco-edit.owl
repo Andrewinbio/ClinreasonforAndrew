@@ -2135,8 +2135,8 @@ All of these should correspond to a subject or object in relations extracted by 
         <obo:IAO_0000112>Patient explains that her significant pelvic discomfort occurs 2-3 days a month concurrent with the onset of menstruation for the past 4 months.</obo:IAO_0000112>
         <obo:IAO_0000115>Statement indicates the reccurence/or frequency of a finding/condition/intervention with a specific time of day or month.</obo:IAO_0000115>
         <obo:IAO_0000232>SNOMEDCT sourced from Athena OHDSI (https://athena.ohdsi.org/search-terms/terms/4079053)</obo:IAO_0000232>
+        <obo:IAO_0000232>This class also encompases the prior has frequency class that was provided in earlier versions of clco-edit.owl. SNOMED 162451001 is symptom frequency, break this down into intervention and condition/symptom/finding frequency.</obo:IAO_0000232>
         <oboInOwl:hasDbXref>SNOMEDCT:246512002</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref>This class also encompases the prior has frequency class that was provided in earlier versions of clco-edit.owl. SNOMED 162451001 is symptom frequency, break this down into intervention and condition/symptom/finding frequency.</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref>biolink:frequency_qualifier</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000019</oboInOwl:id>
         <rdfs:label>has timing</rdfs:label>

@@ -1,5 +1,5 @@
 format-version: 1.2
-data-version: clco/releases/2026-07-25/clco-full.owl
+data-version: clco/releases/2026-09-04/clco-full.owl
 ontology: clco/clco-full
 property_value: http://purl.org/dc/elements/1.1/creator "James J. Cimino" xsd:string
 property_value: http://purl.org/dc/elements/1.1/creator "John D. Osborne" xsd:string
@@ -12,6 +12,7 @@ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0003-410
 property_value: http://purl.org/dc/terms/license http://creativecommons.org/licenses/by/4.0/
 property_value: owl:versionInfo "2026-05-15" xsd:string
 property_value: owl:versionInfo "2026-07-25" xsd:string
+property_value: owl:versionInfo "2026-09-04" xsd:string
 
 [Term]
 id: BFO:0000001
@@ -127,15 +128,6 @@ xref: OMOP_CONCEPT_ID:44818727
 is_a: CLCO:0000006 ! clinical explanation
 relationship: CLCO:0002501 CLCO:0000101 ! has object finding
 property_value: IAO:0000112 "SL nitroglycerin alleviated pain." xsd:string
-
-[Term]
-id: CLCO:0000019
-name: has frequency
-def: "Statement indicating the frequency of a finding/condition or intervention" []
-xref: biolink:frequency_qualifier
-is_a: CLCO:0000057 ! clinical association
-relationship: CLCO:0002501 CLCO:0000103 ! has object time
-property_value: IAO:0000232 "SNOMED 162451001 is symptom frequency, break this down into intervention and condition/symptom/finding frequency." xsd:string
 
 [Term]
 id: CLCO:0000021
@@ -399,26 +391,6 @@ relationship: CLCO:0002501 CLCO:0000103 ! has object time
 property_value: IAO:0000112 "She does endorse some nausea and spit up for the past two weeks" xsd:string
 
 [Term]
-id: CLCO:0000054
-name: has history
-def: "Statement of fact about a patient that constitutes past medical history" []
-xref: OMOP_CONCEPT_ID:44813766
-xref: SNOMED:722291000000108
-is_a: CLCO:0000057 ! clinical association
-relationship: CLCO:0002502 CLCO:0000110 ! has subject patient
-property_value: IAO:0000112 "The patient underwent two kidney transplants (2002, 2012)" xsd:string
-property_value: IAO:0000232 "SNOMED CT United Kingdom clinical extension module sourced." xsd:string
-
-[Term]
-id: CLCO:0000055
-name: has risk factor
-def: "Statement indicating the patient is at risk for a condition or procedure." []
-xref: SNOMED:80943009
-is_a: CLCO:0000025 ! has finding
-relationship: CLCO:0002502 CLCO:0000110 ! has subject patient
-property_value: IAO:0000112 "Patient mentioned genetic risk for DVT/PE from commercial DNA testing kit of unknown type" xsd:string
-
-[Term]
 id: CLCO:0000057
 name: clinical association
 def: "A reified assertion relating two or more clinical entities, representing a contextualized clinical statement that can carry qualifiers such as negation, uncertainty, and temporality." []
@@ -642,11 +614,13 @@ name: intervention
 def: "An intervention to treat or diagnose a finding/condition or the patient" []
 xref: biolink:Procedure
 is_a: CLCO:0000100 ! clinical entity
+property_value: IAO:0000232 "There is not a SNOMED code for this as of 08/19/2026 documented in the athena ohdsi database." xsd:string
 
 [Term]
 id: CLCO:0000103
 name: time
 def: "Numerical or narrative temporal data elements" []
+xref: SNOMEDCT:410669006
 is_a: CLCO:0000100 ! clinical entity
 property_value: IAO:0000232 "Moved from subClassOf task (CLCO_0000109) to subClassOf clinical_entity (CLCO_0000100). Time is a first-class clinical entity type, not a subtype of task." xsd:string
 
@@ -654,43 +628,53 @@ property_value: IAO:0000232 "Moved from subClassOf task (CLCO_0000109) to subCla
 id: CLCO:0000104
 name: reason
 def: "Justifications and reasons for ordering, performing, planning, or discontinuing an intervention or diagnostic process" []
+xref: SNOMEDCT:288830005
 is_a: CLCO:0000100 ! clinical entity
+property_value: IAO:0000232 "SNOMEDCT sourced from Athena OHDSI \"Reason and justification\" (https://athena.ohdsi.org/search-terms/terms/4128496)" xsd:string
 
 [Term]
 id: CLCO:0000105
 name: course
 def: "Course of a finding/condition" []
+xref: SNOMEDCT:260908002
 is_a: CLCO:0000100 ! clinical entity
 
 [Term]
 id: CLCO:0000106
 name: value
 def: "Any numerical or narrative description of a finding/condition or intervention" []
+xref: SNOWMEDCT:83568003
 is_a: CLCO:0000100 ! clinical entity
+property_value: IAO:0000232 "SNOWMEDCT code for \"hasvalue\" sourced from Athena OHDSI database (https://athena.ohdsi.org/search-terms/terms/4306768)" xsd:string
 
 [Term]
 id: CLCO:0000107
 name: setting
 def: "Health care setting or location" []
 is_a: CLCO:0000100 ! clinical entity
+property_value: IAO:0000232 "There is not a SNOMED code for this as of 08/19/2026 documented in the athena ohdsi database." xsd:string
 
 [Term]
 id: CLCO:0000108
 name: clinician
 def: "Health care professional, unlike SNOMED, includes only people working directly with patients such as physicians, nurses, etc... Administrative healthcare professionals such as healthcare billing coders are not included." []
+xref: SNOMEDCT:44804106
 is_a: CLCO:0000100 ! clinical entity
 
 [Term]
 id: CLCO:0000109
 name: task
 def: "Any healthcare related task not related to direct clinical activities (e.g., phone call or uploading a medical record file)." []
+xref: SNOMEDCT:101878003
 is_a: CLCO:0000100 ! clinical entity
+property_value: IAO:0000232 "SNOMEDCT code sourced from Athena OHDSI \"TASK\" (https://athena.ohdsi.org/search-terms/terms/4008963)" xsd:string
 
 [Term]
 id: CLCO:0000110
 name: patient
 def: "The patient entity" []
 xref: biolink:Case
+xref: SNOMEDCT:116154003
 is_a: CLCO:0000100 ! clinical entity
 
 [Term]
@@ -712,7 +696,9 @@ is_a: CLCO:0000100 ! clinical entity
 id: CLCO:0000113
 name: patient state
 def: "Patient state, e.g., stable, improving. The overall patient state, not whether a particular disease or condition is stable or improving." []
+xref: SNOWMEDCT:246097001
 is_a: CLCO:0000100 ! clinical entity
+property_value: IAO:0000232 "SNOMEDCT was sourced from Athena OHDSI \"Patient Status\" (http://athena.ohdsi.org/search-terms/terms/4077556)" xsd:string
 
 [Term]
 id: CLCO:0000114
@@ -723,6 +709,7 @@ xref: SNOMED:58000006
 is_a: CLCO:0000058 ! has setting
 relationship: CLCO:0002502 CLCO:0000110 ! has subject patient
 property_value: IAO:0000112 "Patient discharged this morning with family" xsd:string
+property_value: IAO:0000112 "Patient will be discharged" xsd:string
 
 [Term]
 id: CLCO:0000115
@@ -735,6 +722,26 @@ is_a: CLCO:0000100 ! clinical entity
 id: IAO:0000030
 name: information content entity
 def: "A generically dependent continuant that is about some entity." []
+
+[Term]
+id: has_family_history
+name: has family history
+def: "History of chronic illness in family members" []
+xref: SNOMEDCT:137667000
+is_a: CLCO:0000083 ! historical
+property_value: IAO:0000112 "The patient's mother has a past medical history of hypercholoesterolemia." xsd:string
+property_value: IAO:0000232 "Sourced from Athena OHDSI \"family history\" (https://athena.ohdsi.org/search-terms/terms/40306697)" xsd:string
+
+[Term]
+id: has_timing
+name: has timing
+def: "Statement indicates the reccurence/or frequency of a finding/condition/intervention with a specific time of day or month." []
+xref: biolink:frequency_qualifier
+xref: SNOMEDCT:246512002
+is_a: CLCO:0000057 ! clinical association
+property_value: IAO:0000112 "Patient explains that her significant pelvic discomfort occurs 2-3 days a month concurrent with the onset of menstruation for the past 4 months." xsd:string
+property_value: IAO:0000232 "SNOMEDCT sourced from Athena OHDSI (https://athena.ohdsi.org/search-terms/terms/4079053)" xsd:string
+property_value: IAO:0000232 "This class also encompases the prior has frequency class that was provided in earlier versions of clco-edit.owl. SNOMED 162451001 is symptom frequency, break this down into intervention and condition/symptom/finding frequency." xsd:string
 
 [Typedef]
 id: CLCO:0002000
