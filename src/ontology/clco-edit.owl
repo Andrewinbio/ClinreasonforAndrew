@@ -783,7 +783,7 @@ RELATION: SOURCE =&gt; is admitted =&gt; TARGET</obo:IAO_0000112></owl:Class>
     <!-- http://purl.obolibrary.org/obo/CLCO_0000011 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000011">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000006"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
@@ -813,10 +813,12 @@ RELATION: SOURCE =&gt; is admitted =&gt; TARGET</obo:IAO_0000112></owl:Class>
         <obo:IAO_0000112>Here for packing and splint removal after recent discharge from rehab</obo:IAO_0000112>
         <obo:IAO_0000115>Statement indicating that an intervention or finding precedes an intervention or finding.</obo:IAO_0000115>
         <obo:IAO_0000232>Used to be "is followed by" but this causes confusion when following refers to a particular clilnician responsible for a patient's care</obo:IAO_0000232>
+        <obo:IAO_0000232>Re-parented from clinical explanation (CLCO:0000006) to temporal relation (CLCO:0000116) on 2026-10-30: precedence is temporal ordering, not explanation. TimeML TLINK relType BEFORE; interval semantics are time:intervalBefore, linked by rdfs:seeAlso. The inverse is follows (CLCO:0000117).</obo:IAO_0000232>
         <oboInOwl:hasDbXref>OMOP_CONCEPT_ID:4272244</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref>SNOMED:367409002</oboInOwl:hasDbXref>
         <oboInOwl:id>CLCO:0000011</oboInOwl:id>
         <rdfs:label>precedes</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalBefore"/>
     <obo:IAO_0000112>POSITIVE EXAMPLES:
 "preceded by" =&gt; precedes
 "before" =&gt; precedes
@@ -3946,6 +3948,598 @@ Annotate: "diabetes" =&gt; finding
 
 "The patient's sister reported similar symptoms."
 Annotate: "sister" =&gt; family member</obo:IAO_0000112></owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000116 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000116">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000057"/>
+        <obo:IAO_0000115>A clinical association asserting the temporal ordering of one finding or intervention relative to another, as stated in the text. Children correspond to the TimeML TLINK relation types that hold between events.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. Annotation layer for event-to-event temporal ordering. Each child names a text-cued relation an annotator can mark and carries an rdfs:seeAlso to the OWL-Time property that gives its interval semantics. The two layers are deliberately separate: the children here are the cue-bearing subset, while the complete thirteen-relation algebra is derived over time:ProperInterval endpoints, which CLCO already supplies through has start time (CLCO:0002700) and has end time (CLCO:0002701). time:intervalOverlaps and time:intervalOverlappedBy have no child here because TimeML has no relType for partial overlap -- annotators cannot reliably distinguish it from containment in text -- so those two are derivable but never annotated. Event-to-timex links are unchanged and remain has onset, has date, has duration and has frequency. Document-relative time is a separate axis, carried by temporal frame (CLCO:0000082).</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000116</oboInOwl:id>
+        <rdfs:label>temporal relation</rdfs:label>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000117 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000117">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"followed" =&gt; follows
+"occurred after" =&gt; follows
+"subsequent to" =&gt; follows
+
+NEGATIVE EXAMPLES:
+"preceded" =&gt; precedes, NOT follows
+"at the same time as" =&gt; is simultaneous with, NOT follows
+"throughout" =&gt; is included in, NOT follows
+
+CONTEXTUAL EXAMPLES:
+"The rash followed the fever."
+SOURCE: "rash" =&gt; finding; TARGET: "fever" =&gt; finding
+RELATION: SOURCE =&gt; follows =&gt; TARGET
+"Delirium developed after the surgery."
+SOURCE: "delirium" =&gt; finding; TARGET: "surgery" =&gt; intervention
+RELATION: SOURCE =&gt; follows =&gt; TARGET
+"Dialysis began after the graft failed."
+SOURCE: "dialysis" =&gt; intervention; TARGET: "graft failure" =&gt; finding
+RELATION: SOURCE =&gt; follows =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that a finding or intervention occurs after another finding or intervention, with a gap permitted between them.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType AFTER; interval semantics are time:intervalAfter, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000117</oboInOwl:id>
+        <rdfs:label>follows</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalAfter"/>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000118 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000118">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"immediately before" =&gt; immediately precedes
+"right before" =&gt; immediately precedes
+"ended just as" =&gt; immediately precedes
+
+NEGATIVE EXAMPLES:
+"before" =&gt; precedes, NOT immediately precedes
+"at the same time as" =&gt; is simultaneous with, NOT immediately precedes
+"during" =&gt; is included in, NOT immediately precedes
+
+CONTEXTUAL EXAMPLES:
+"The seizure stopped and the post-ictal state began immediately."
+SOURCE: "seizure" =&gt; finding; TARGET: "post-ictal state" =&gt; finding
+RELATION: SOURCE =&gt; immediately precedes =&gt; TARGET
+"Sedation ended and extubation began straight away."
+SOURCE: "sedation" =&gt; intervention; TARGET: "extubation" =&gt; intervention
+RELATION: SOURCE =&gt; immediately precedes =&gt; TARGET
+"The infusion finished just as the reaction started."
+SOURCE: "infusion" =&gt; intervention; TARGET: "reaction" =&gt; finding
+RELATION: SOURCE =&gt; immediately precedes =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that a finding or intervention ends exactly where another begins, with no gap between them.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType IBEFORE; interval semantics are time:intervalMeets, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000118</oboInOwl:id>
+        <rdfs:label>immediately precedes</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalMeets"/>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000119 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000119">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"immediately after" =&gt; immediately follows
+"straight after" =&gt; immediately follows
+"began as soon as" =&gt; immediately follows
+
+NEGATIVE EXAMPLES:
+"after" =&gt; follows, NOT immediately follows
+"at the same time as" =&gt; is simultaneous with, NOT immediately follows
+"within" =&gt; is included in, NOT immediately follows
+
+CONTEXTUAL EXAMPLES:
+"Extubation immediately followed the procedure."
+SOURCE: "extubation" =&gt; intervention; TARGET: "procedure" =&gt; intervention
+RELATION: SOURCE =&gt; immediately follows =&gt; TARGET
+"The post-ictal state began as soon as the seizure stopped."
+SOURCE: "post-ictal state" =&gt; finding; TARGET: "seizure" =&gt; finding
+RELATION: SOURCE =&gt; immediately follows =&gt; TARGET
+"Hypotension began the moment the infusion stopped."
+SOURCE: "hypotension" =&gt; finding; TARGET: "infusion" =&gt; intervention
+RELATION: SOURCE =&gt; immediately follows =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that a finding or intervention begins exactly where another ends, with no gap between them.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType IAFTER; interval semantics are time:intervalMetBy, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000119</oboInOwl:id>
+        <rdfs:label>immediately follows</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalMetBy"/>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000120 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000120">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"started with" =&gt; begins
+"opened" =&gt; begins
+"at the start of" =&gt; begins
+
+NEGATIVE EXAMPLES:
+"throughout" =&gt; is simultaneous with, NOT begins
+"finished with" =&gt; ends, NOT begins
+"after" =&gt; follows, NOT begins
+
+CONTEXTUAL EXAMPLES:
+"The loading dose was given at the start of the antibiotic course."
+SOURCE: "loading dose" =&gt; intervention; TARGET: "antibiotic course" =&gt; intervention
+RELATION: SOURCE =&gt; begins =&gt; TARGET
+"Induction opened the anaesthetic."
+SOURCE: "induction" =&gt; intervention; TARGET: "anaesthetic" =&gt; intervention
+RELATION: SOURCE =&gt; begins =&gt; TARGET
+"The initial rigor marked the onset of the febrile illness."
+SOURCE: "rigor" =&gt; finding; TARGET: "febrile illness" =&gt; finding
+RELATION: SOURCE =&gt; begins =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that a finding or intervention starts at the same time as another and ends before it.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType BEGINS; interval semantics are time:intervalStarts, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000120</oboInOwl:id>
+        <rdfs:label>begins</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalStarts"/>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000121 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000121">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"opened with" =&gt; begun by
+"started with" =&gt; begun by
+"began with" =&gt; begun by
+
+NEGATIVE EXAMPLES:
+"closed with" =&gt; ended by, NOT begun by
+"throughout" =&gt; is simultaneous with, NOT begun by
+"contained" =&gt; includes, NOT begun by
+
+CONTEXTUAL EXAMPLES:
+"The antibiotic course opened with a loading dose."
+SOURCE: "antibiotic course" =&gt; intervention; TARGET: "loading dose" =&gt; intervention
+RELATION: SOURCE =&gt; begun by =&gt; TARGET
+"The anaesthetic began with induction."
+SOURCE: "anaesthetic" =&gt; intervention; TARGET: "induction" =&gt; intervention
+RELATION: SOURCE =&gt; begun by =&gt; TARGET
+"The febrile illness began with a rigor."
+SOURCE: "febrile illness" =&gt; finding; TARGET: "rigor" =&gt; finding
+RELATION: SOURCE =&gt; begun by =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that a finding or intervention starts at the same time as another and ends after it.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType BEGUN_BY; interval semantics are time:intervalStartedBy, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000121</oboInOwl:id>
+        <rdfs:label>begun by</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalStartedBy"/>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000122 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000122">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"ran to the end of" =&gt; ends
+"finished with" =&gt; ends
+"concluded" =&gt; ends
+
+NEGATIVE EXAMPLES:
+"started with" =&gt; begins, NOT ends
+"throughout" =&gt; is simultaneous with, NOT ends
+"before" =&gt; precedes, NOT ends
+
+CONTEXTUAL EXAMPLES:
+"The weaning trial ran to the end of the ventilation episode."
+SOURCE: "weaning trial" =&gt; intervention; TARGET: "ventilation episode" =&gt; intervention
+RELATION: SOURCE =&gt; ends =&gt; TARGET
+"The taper concluded the steroid course."
+SOURCE: "taper" =&gt; intervention; TARGET: "steroid course" =&gt; intervention
+RELATION: SOURCE =&gt; ends =&gt; TARGET
+"The desaturation persisted to the end of the procedure."
+SOURCE: "desaturation" =&gt; finding; TARGET: "procedure" =&gt; intervention
+RELATION: SOURCE =&gt; ends =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that a finding or intervention finishes at the same time as another, having started after it.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType ENDS; interval semantics are time:intervalFinishes, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000122</oboInOwl:id>
+        <rdfs:label>ends</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalFinishes"/>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000123 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000123">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"closed with" =&gt; ended by
+"ended with" =&gt; ended by
+"concluded with" =&gt; ended by
+
+NEGATIVE EXAMPLES:
+"opened with" =&gt; begun by, NOT ended by
+"throughout" =&gt; is simultaneous with, NOT ended by
+"spanned" =&gt; includes, NOT ended by
+
+CONTEXTUAL EXAMPLES:
+"The ventilation episode closed with a weaning trial."
+SOURCE: "ventilation episode" =&gt; intervention; TARGET: "weaning trial" =&gt; intervention
+RELATION: SOURCE =&gt; ended by =&gt; TARGET
+"The steroid course ended with a taper."
+SOURCE: "steroid course" =&gt; intervention; TARGET: "taper" =&gt; intervention
+RELATION: SOURCE =&gt; ended by =&gt; TARGET
+"The admission concluded with a discharge review."
+SOURCE: "admission" =&gt; intervention; TARGET: "discharge review" =&gt; intervention
+RELATION: SOURCE =&gt; ended by =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that a finding or intervention finishes at the same time as another, having started before it.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType ENDED_BY; interval semantics are time:intervalFinishedBy, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000123</oboInOwl:id>
+        <rdfs:label>ended by</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalFinishedBy"/>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000124 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000124">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"during" =&gt; is included in
+"while" =&gt; is included in
+"in the course of" =&gt; is included in
+
+NEGATIVE EXAMPLES:
+"spanned" =&gt; includes, NOT is included in
+"after" =&gt; follows, NOT is included in
+"started with" =&gt; begins, NOT is included in
+
+CONTEXTUAL EXAMPLES:
+"The fever occurred during the admission."
+SOURCE: "fever" =&gt; finding; TARGET: "admission" =&gt; intervention
+RELATION: SOURCE =&gt; is included in =&gt; TARGET
+"Atrial fibrillation developed in the course of the sepsis."
+SOURCE: "atrial fibrillation" =&gt; finding; TARGET: "sepsis" =&gt; finding
+RELATION: SOURCE =&gt; is included in =&gt; TARGET
+"A transfusion was given while the patient was in theatre."
+SOURCE: "transfusion" =&gt; intervention; TARGET: "operation" =&gt; intervention
+RELATION: SOURCE =&gt; is included in =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that a finding or intervention falls wholly within the extent of another, sharing neither its beginning nor its end.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType IS_INCLUDED; interval semantics are time:intervalDuring, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000124</oboInOwl:id>
+        <rdfs:label>is included in</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalDuring"/>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000125 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000125">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"spanned" =&gt; includes
+"throughout which" =&gt; includes
+"encompassed" =&gt; includes
+
+NEGATIVE EXAMPLES:
+"during" =&gt; is included in, NOT includes
+"before" =&gt; precedes, NOT includes
+"closed with" =&gt; ended by, NOT includes
+
+CONTEXTUAL EXAMPLES:
+"The admission spanned the episode of delirium."
+SOURCE: "admission" =&gt; intervention; TARGET: "delirium" =&gt; finding
+RELATION: SOURCE =&gt; includes =&gt; TARGET
+"The sepsis encompassed the period of atrial fibrillation."
+SOURCE: "sepsis" =&gt; finding; TARGET: "atrial fibrillation" =&gt; finding
+RELATION: SOURCE =&gt; includes =&gt; TARGET
+"The operation covered the transfusion."
+SOURCE: "operation" =&gt; intervention; TARGET: "transfusion" =&gt; intervention
+RELATION: SOURCE =&gt; includes =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that a finding or intervention wholly contains the extent of another, sharing neither its beginning nor its end.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType INCLUDES; interval semantics are time:intervalContains, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000125</oboInOwl:id>
+        <rdfs:label>includes</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalContains"/>
+    </owl:Class>    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLCO_0000126 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLCO_0000126">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CLCO_0000116"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002501"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/CLCO_0002502"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000101"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CLCO_0000102"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000112>POSITIVE EXAMPLES:
+"at the same time as" =&gt; is simultaneous with
+"together with" =&gt; is simultaneous with
+"concurrently" =&gt; is simultaneous with
+
+NEGATIVE EXAMPLES:
+"during" =&gt; is included in, NOT is simultaneous with
+"after" =&gt; follows, NOT is simultaneous with
+"started with" =&gt; begins, NOT is simultaneous with
+
+CONTEXTUAL EXAMPLES:
+"The rash and the fever appeared together."
+SOURCE: "rash" =&gt; finding; TARGET: "fever" =&gt; finding
+RELATION: SOURCE =&gt; is simultaneous with =&gt; TARGET
+"The chest pain and the dyspnoea began concurrently."
+SOURCE: "chest pain" =&gt; finding; TARGET: "dyspnoea" =&gt; finding
+RELATION: SOURCE =&gt; is simultaneous with =&gt; TARGET
+"Fluids ran at the same time as the antibiotics."
+SOURCE: "fluid resuscitation" =&gt; intervention; TARGET: "antibiotics" =&gt; intervention
+RELATION: SOURCE =&gt; is simultaneous with =&gt; TARGET</obo:IAO_0000112>
+        <obo:IAO_0000115>Statement indicating that two findings or interventions occupy the same extent in time.</obo:IAO_0000115>
+        <obo:IAO_0000232>Added 2026-10-30. TimeML TLINK relType SIMULTANEOUS; interval semantics are time:intervalEquals, linked by rdfs:seeAlso. Annotated from a text cue between two events; the corresponding interval relation is derived from endpoints rather than annotated.</obo:IAO_0000232>
+        <oboInOwl:id>CLCO:0000126</oboInOwl:id>
+        <rdfs:label>is simultaneous with</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#intervalEquals"/>
+    </owl:Class>
     
 
 
